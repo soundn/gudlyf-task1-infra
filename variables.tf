@@ -11,3 +11,8 @@ variable "kubernetes_version" {
   type        = string
   default     = null
 }
+variable "environment" {
+  description = "The environment for the deployment (e.g., dev, staging, production)"
+  type        = string
+  default     = null
+}
