@@ -9,7 +9,7 @@ variable "aws_region" {
 variable "kubernetes_version" {
   description = "Kubernetes version to use for the EKS cluster. If not set, the latest available version will be used."
   type        = string
-  default     = null
+  default     = 1.28
 }
 variable "environment" {
   description = "The environment for the deployment (e.g., dev, staging, production)"
