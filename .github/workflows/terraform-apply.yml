@@ -28,4 +28,5 @@ jobs:
         run: terraform apply -auto-approve -var="environment=${{ github.event.inputs.environment }}"
 
       - name: Output cluster endpoint
-        run: echo "EKS Cluster Endpoint: $(terraform output -raw eks_cluster_endpoint)"
+        run: |
+          echo "EKS Cluster Endpoint: $(terraform output -raw eks_cluster_endpoint)"
