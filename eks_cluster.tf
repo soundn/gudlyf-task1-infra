@@ -2,7 +2,7 @@ module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   version         = "20.8.4"
   cluster_name    = local.cluster_name
-  cluster_version = var.kubernetes_version != null ? var.kubernetes_version : data.aws_eks_cluster_version.latest.version
+  cluster_version = var.kubernetes_version != null ? var.kubernetes_version : data.aws_eks_cluster.latest.version
   subnet_ids      = module.vpc.private_subnets
   enable_irsa     = true
   tags = {
@@ -54,6 +54,6 @@ module "eks" {
 
 data "aws_caller_identity" "current" {}
 
-data "aws_eks_cluster_version" "latest" {
-  version_prefix = "1."
+data "aws_eks_cluster" "latest" {
+  name = local.cluster_name
 }
