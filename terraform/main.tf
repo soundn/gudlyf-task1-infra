@@ -1,7 +1,3 @@
-provider "aws" {
-  region = var.aws_region
-}
-
 module "vpc" {
   source = "./modules/vpc"
   cidr_block = var.vpc_cidr
@@ -15,6 +11,3 @@ module "eks" {
   node_instance_type = var.node_instance_type
 }
 
-output "eks_cluster_endpoint" {
-  value = module.eks.cluster_endpoint
-}
