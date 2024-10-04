@@ -7,6 +7,15 @@ on:
         description: 'Environment to deploy'
         required: true
         default: 'development'
+      action:
+        type: choice
+        description: 'Apply or Destroy'
+        options:
+          - plan
+          - apply
+          - destroy
+        required: true
+        default: 'apply'
 
 jobs:
   terraform:
@@ -27,6 +36,7 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -var="environment=${{ github.event.inputs.environment }}"
  
-
-      - name: Terraform Apply
-        run: terraform apply -var="environment=${{ github.event.inputs.environment }}" -auto-approve
+      - name: Terraform Action
+        if: ${{ github.event.inputs.action == 'apply' || github.event.inputs.action == 'destroy' }}
+        
+        run: terraform ${{ github.event.inputs.action }} -auto-approve -input=false
