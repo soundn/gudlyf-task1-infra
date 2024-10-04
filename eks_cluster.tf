@@ -54,4 +54,6 @@ module "eks" {
 
 data "aws_caller_identity" "current" {}
 
-data "aws_eks_cluster_version" "latest" {}
+data "aws_eks_cluster_version" "latest" {
+  version_prefix = "1."
+}
