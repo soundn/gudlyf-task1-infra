@@ -1,18 +1,19 @@
+variable "region" {
+  default = "eu-north-1"
+}
+
 variable "vpc_cidr" {
-  default     = "10.0.0.0/16"
-  description = "default CIDR range of the VPC"
+  default = "10.0.0.0/16"
 }
-variable "aws_region" {
-  default     = "eu-north-1"
-  description = "aws region"
+
+variable "subnet_count" {
+  default = 2
 }
-variable "kubernetes_version" {
-  description = "Kubernetes version to use for the EKS cluster. If not set, the latest available version will be used."
-  type        = string
-  default     = 1.28
+
+variable "cluster_name" {
+  default = "ken-cluster"
 }
-variable "environment" {
-  description = "The environment for the deployment (e.g., dev, staging, production)"
-  type        = string
-  default     = null
+
+variable "ssh_key_name" {
+  description = "SSH key name for EC2 instances"
 }
